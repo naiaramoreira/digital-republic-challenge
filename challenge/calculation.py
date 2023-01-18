@@ -1,21 +1,23 @@
 from challenge.validation_rules import Validation
 
-class Tintas():
+class CalculationPaint():
 
-    def area(self):
+    def area(self, dados):
         validation = Validation()
         area = 0
 
-        for i in range(1,5):
-            height = round(float(input(f"Qual a altura da parede {i}?: ")), 2)
-            validation.valid_height(height)
-            width = round(float(input(f"Qual a largura da parede {i}?: ")), 2)
-            validation.valid_area(width, height)
-            area += width + height
+        #Terminar a parte de verificação dos dados que veio pelo html
+        for dict in dados:
+            for i in range(1,5):
+                height = dict[i]
+                validation.valid_height(height)
+                width = round(float(input(f"Qual a largura da parede {i}?: ")), 2)
+                validation.valid_area(width, height)
+                area += width + height
 
-            window = int(input(f"Quantas janelas  possui a parede {i}?: "))
-            door = int(input(f"Quantas portas  possui a parede {i}?: "))
-            validation.valid_doors_window(door, window, area)
+                window = int(input(f"Quantas janelas  possui a parede {i}?: "))
+                door = int(input(f"Quantas portas  possui a parede {i}?: "))
+                validation.valid_doors_window(door, window, area)
 
 
 
@@ -49,6 +51,5 @@ class Tintas():
             elif 0 > litros_tinta < 0.5:
                 litros_tinta -= litros_tinta
                 total_latas['0.5 L'] += 1
-        print(total_latas)
 
-Tintas().calculoLatas()
+        return total_latas

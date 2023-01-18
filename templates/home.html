@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Flask Tutorial</title>
+  </head>
+  <body>
+    {% extends "template.html" %}
+    {% block content %}
+    <div>
+      <form method="get">
+
+        {% for i in range(1,5) %}
+          Qual a altura da parede {{i}} ?
+          <input type="text" name="height_{{i}}">
+          <br>
+
+          Qual a largura da parede {{i}}? "
+          <input type="text" name="width_{{i}}">
+          <br>
+
+          Quantas janelas  possui a parede {{i}}?
+          <input type="text" name="window_{{i}}">
+          <br>
+
+          Quantas portas  possui a parede {{i}}?
+          <input type="text" name="door_{{i}}">
+          <br>
+        {% endfor %}
+        <input type="submit" value="Enviar">
+      </form>
+    </div>
+
+    {% if result %}
+      <div>
+        {{result}}!!!
+      </div>
+    {% endif %}
+
+    {% endblock %}
+  </body>
+</html>
