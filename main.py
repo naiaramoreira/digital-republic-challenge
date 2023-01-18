@@ -4,25 +4,23 @@ from challenge.calculation import CalculationPaint
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.route("/", methods=('GET', 'POST'))
 def home():
-    height = {}
-    width = {}
-    window = {}
-    door = {}
-    data_calculation = []
+    dict = {}
+    data_calculation = {}
+    result = 0
 
-    for i in range(1, 5):
-        height[i] = request.args.get('height_'+str(i))
-        width[i] = request.args.get('width_' + str(i))
-        window[i] = request.args.get('window_' + str(i))
-        door[i] = request.args.get('door_' + str(i))
+    if request.method == 'POST':
+        for i in range(1, 5):
 
-    data_calculation.append(height)
-    data_calculation.append(width)
-    data_calculation.append(window)
-    data_calculation.append(door)
-    result = CalculationPaint().calculoLatas()
+            dict['height'] = request.form.get('height_'+str(i))
+            dict['width'] = request.form.get('width_' + str(i))
+            dict['window'] = request.form.get('window_' + str(i))
+            dict['door'] = request.form.get('door_' + str(i))
+
+            data_calculation[i] = dict
+
+        result = CalculationPaint().calculoLatas(data_calculation)
 
     return render_template("home.html", result=result)
 

@@ -8,26 +8,27 @@
     {% extends "template.html" %}
     {% block content %}
     <div>
-      <form method="get">
+      <form method="post">
+        <div class="form-group">
+          {% for i in range(1,5) %}
+            Qual a altura da parede {{ i }} ?
+            <input type="number" name="height_{{i}}" value="{{ request.form['height_{{i}}']}}">
+            <br>
 
-        {% for i in range(1,5) %}
-          Qual a altura da parede {{i}} ?
-          <input type="text" name="height_{{i}}">
-          <br>
+            Qual a largura da parede {{i}}? "
+            <input type="number" name="width_{{i}}">
+            <br>
 
-          Qual a largura da parede {{i}}? "
-          <input type="text" name="width_{{i}}">
-          <br>
+            Quantas janelas  possui a parede {{i}}?
+            <input type="number" name="window_{{i}}">
+            <br>
 
-          Quantas janelas  possui a parede {{i}}?
-          <input type="text" name="window_{{i}}">
-          <br>
-
-          Quantas portas  possui a parede {{i}}?
-          <input type="text" name="door_{{i}}">
-          <br>
-        {% endfor %}
-        <input type="submit" value="Enviar">
+            Quantas portas  possui a parede {{i}}?
+            <input type="number" name="door_{{i}}">
+            <br>
+          {% endfor %}
+          <input type="submit" value="Enviar">
+        </div>
       </form>
     </div>
 
