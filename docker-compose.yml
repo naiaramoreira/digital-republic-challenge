@@ -1,0 +1,19 @@
+version: '3'
+
+
+services:
+  challenge_app:
+    build: 
+      context: ./
+      dockerfile: Dockerfile
+    container_name: challenge_app
+    volumes:
+      - .:/code:rw
+    ports:
+      - "5000:5000"
+    networks:
+      - challenge_net
+
+networks:
+  challenge_net:
+    driver: bridge
