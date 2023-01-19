@@ -5,10 +5,8 @@ Essa aplicação considera que a sala é composta de 4 paredes e permite que o u
 Com base na quantidade necessária o sistema mostra tamanhos e quantidades de latas de tinta que o usuário deve comprar.
 
 ## Pré Requisitos
-
-#### Docker version 20.10.17
-
 Para executar o projeto, será necessario ter o Docker instalado na máquina.
+#### Docker version 20.10.17
 
 ## Execução da aplicação
 
