@@ -6,11 +6,10 @@ app = Flask(__name__)
 
 @app.route("/", methods=('GET', 'POST'))
 def home():
-    dict = {}
-    data_calculation = {}
-    result = 0
+    dict, data_calculation, result, message, area = {}, {}, 0, None, 0
 
     if request.method == 'POST':
+
         for i in range(1, 5):
 
             dict['height'] = request.form.get('height_'+str(i))
@@ -20,9 +19,9 @@ def home():
 
             data_calculation[i] = dict
 
-        result = CalculationPaint().calculoLatas(data_calculation)
+        result, area, message = CalculationPaint().calculation_paint_cans(data_calculation)
 
-    return render_template("home.html", result=result)
+    return render_template("home.html", result=result, area=area, message=message)
 
 @app.route("/about")
 def about():
@@ -30,4 +29,4 @@ def about():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="localhost", port=5000)
